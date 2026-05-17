@@ -1,8 +1,12 @@
+import steveImg from '../assets/steve.jpg';
+import creeperImg from '../assets/creeper.jpg';
+import enderImg from '../assets/ender.png';
+
 export default function Services({ setVista, setPlanSeleccionado }) {
   const planes = [
-    { id: 1, nombre: "Plan Steve", ram: "2 GB", precio: "4.99", desc: "Ideal para jugar con amigos", imagen: "/steve.jpg" },
-    { id: 2, nombre: "Plan Creeper", ram: "4 GB", precio: "8.99", desc: "Para servidores con mods básicos", imagen: "/creeper.jpg" },
-    { id: 3, nombre: "Plan Ender", ram: "8 GB", precio: "15.99", desc: "Comunidades grandes y modpacks", imagen: "/ender.png" },
+    { id: 1, nombre: "Plan Steve", ram: "2 GB", precio: "4.99", desc: "Ideal para jugar con amigos", imagen: steveImg },
+    { id: 2, nombre: "Plan Creeper", ram: "4 GB", precio: "8.99", desc: "Para servidores con mods básicos", imagen: creeperImg },
+    { id: 3, nombre: "Plan Ender", ram: "8 GB", precio: "15.99", desc: "Comunidades grandes y modpacks", imagen: enderImg },
   ];
 
   return (
