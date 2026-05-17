@@ -18,3 +18,4 @@ Una plataforma web interactiva desarrollada para la simulación de compra y alqu
 * **Estilos:** Tailwind CSS v4
 * **APIs Externas:** CoinDesk API (Precios Crypto) y QRServer API (Generación de QR)
 
+- Panel de control simulado estilo Pterodactyl integrado.
