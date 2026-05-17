@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Configuracion({ setVista, plan }) {
+export default function Configuracion({ setVista, plan, setServerConfig }) {
   const [iconoPreview, setIconoPreview] = useState(null);
 
   if (!plan) {
@@ -27,7 +27,14 @@ export default function Configuracion({ setVista, plan }) {
           </div>
         </div>
 
-        <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); setVista('pago'); }}>
+        <form className="space-y-6" onSubmit={(e) => { 
+          e.preventDefault(); 
+          setServerConfig({
+            nombre: e.target[0].value || 'Mi Mundo Survival',
+            dominio: e.target[1].value + '.minehosting.com'
+          });
+          setVista('pago'); 
+        }}>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>

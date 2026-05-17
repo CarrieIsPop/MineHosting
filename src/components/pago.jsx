@@ -61,7 +61,7 @@ export default function Pago({ setVista, plan }) {
             onClick={() => setVista('inicio')}
             className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg transition"
           >
-            Volver al Inicio
+            Ir al Panel de Control 🚀
           </button>
         </div>
       </main>
