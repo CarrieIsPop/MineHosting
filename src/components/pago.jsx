@@ -58,7 +58,7 @@ export default function Pago({ setVista, plan }) {
             Tu servidor <strong>{plan.nombre}</strong> se está desplegando. Recibirás un correo con la IP y las credenciales de acceso en breve.
           </p>
           <button 
-            onClick={() => setVista('inicio')}
+            onClick={() => setVista('panel')}
             className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-lg transition"
           >
             Ir al Panel de Control 🚀
