@@ -143,29 +143,29 @@ export default function Panel({ plan, config }) {
       return (
         <div className="bg-[#1a1e27] rounded-lg border border-gray-800 flex flex-col h-full shadow-lg">
           <div className="p-4 border-b border-gray-800 flex justify-between items-center bg-[#1a1e27] rounded-t-lg">
-            <span className="text-gray-400 text-sm">/ inicio / contenedor /</span>
-            <input type="text" placeholder="🔍 Buscar" className="bg-[#11151d] border border-gray-700 rounded p-2 text-sm text-white w-64 outline-none" />
+            <span className="text-gray-400 text-sm hidden md:inline">/ inicio / contenedor /</span>
+            <input type="text" placeholder="🔍 Buscar" className="bg-[#11151d] border border-gray-700 rounded p-2 text-sm text-white w-full md:w-64 outline-none" />
           </div>
           <div className="grid grid-cols-12 p-4 text-xs font-bold text-gray-500 border-b border-gray-800 uppercase tracking-wider">
-            <div className="col-span-6">Nombre ↓</div>
-            <div className="col-span-3 text-right">Tamaño ↓</div>
-            <div className="col-span-3 text-right">Fecha ↓</div>
+            <div className="col-span-8 md:col-span-6">Nombre ↓</div>
+            <div className="col-span-4 md:col-span-3 text-right">Tamaño ↓</div>
+            <div className="hidden md:block md:col-span-3 text-right">Fecha ↓</div>
           </div>
           <div className="flex-1 overflow-y-auto">
             {[
-              { icon: '🗑️', name: 'Papelera de Reciclaje', size: '-', date: '-' },
-              { icon: '📁', name: 'config', size: '-', date: 'may 8º, 2026' },
-              { icon: '📁', name: 'logs', size: '-', date: 'hace 9 horas' },
-              { icon: '📁', name: 'mods', size: '-', date: 'may 8º, 2026' },
-              { icon: '📁', name: 'world', size: '-', date: 'hace 1 minuto' },
-              { icon: '📄', name: 'banned-ips.json', size: '2 Bytes', date: 'hace 9 horas' },
-              { icon: '📄', name: 'eula.txt', size: '9 Bytes', date: 'may 8º, 2026' },
-              { icon: '📄', name: 'server.jar', size: '9.52 KiB', date: 'abr 10º, 2026' },
+              { icon: '🗑️', name: 'Papelera', size: '-', date: '-' },
+              { icon: '📁', name: 'config', size: '-', date: 'may 8º' },
+              { icon: '📁', name: 'logs', size: '-', date: 'hace 9h' },
+              { icon: '📁', name: 'mods', size: '-', date: 'may 8º' },
+              { icon: '📁', name: 'world', size: '-', date: 'hace 1m' },
+              { icon: '📄', name: 'banned.json', size: '2 B', date: 'hace 9h' },
+              { icon: '📄', name: 'eula.txt', size: '9 B', date: 'may 8º' },
+              { icon: '📄', name: 'server.jar', size: '9.5 KiB', date: 'abr 10º' },
             ].map((file, i) => (
               <div key={i} className="grid grid-cols-12 p-4 border-b border-gray-800/50 hover:bg-[#11151d] transition text-sm text-gray-300 items-center cursor-pointer">
-                <div className="col-span-6 flex items-center gap-3"><span className="text-xl">{file.icon}</span> {file.name}</div>
-                <div className="col-span-3 text-right text-gray-500">{file.size}</div>
-                <div className="col-span-3 text-right text-gray-500">{file.date}</div>
+                <div className="col-span-8 md:col-span-6 flex items-center gap-3 truncate"><span className="text-xl">{file.icon}</span> <span className="truncate">{file.name}</span></div>
+                <div className="col-span-4 md:col-span-3 text-right text-gray-500">{file.size}</div>
+                <div className="hidden md:block md:col-span-3 text-right text-gray-500">{file.date}</div>
               </div>
             ))}
           </div>
@@ -175,58 +175,44 @@ export default function Panel({ plan, config }) {
 
     if (tab === 'plugins') {
       const pluginsList = [
-        { name: 'LuckPerms', author: 'Luck', desc: 'A permissions plugin for Minecraft servers (Bukkit/Spigot, BungeeCord & more)', updated: 'hace 12 meses', dls: '8.5M', stars: '460', icon: '🍀' },
-        { name: 'Simple Tpa', author: 'MuleMuleDupe', desc: 'A simple tpa plugin which sends requests', updated: 'hace 7 meses', dls: '5.16M', stars: '5', icon: '⚙️' },
-        { name: 'Set Home', author: 'DownThePark', desc: 'A lightweight plugin for players to set their homes.', updated: 'ene 14º, 2024', dls: '3.67M', stars: '6', icon: '🏠' },
-        { name: 'Vault', author: 'Sleaker', desc: 'Vault is a Permissions, Chat, & Economy API to give plugins easy hooks into these systems.', updated: 'jul 17º, 2020', dls: '3.47M', stars: '246', icon: '🔒' }
+        { name: 'LuckPerms', author: 'Luck', desc: 'Permissions plugin for MC servers', updated: 'hace 12 meses', dls: '8.5M', stars: '460', icon: '🍀' },
+        { name: 'Simple Tpa', author: 'MuleMuleDupe', desc: 'Simple tpa plugin for requests', updated: 'hace 7 meses', dls: '5.16M', stars: '5', icon: '⚙️' },
+        { name: 'Set Home', author: 'DownThePark', desc: 'Plugin for players to set homes', updated: 'ene 14º, 2024', dls: '3.67M', stars: '6', icon: '🏠' },
+        { name: 'Vault', author: 'Sleaker', desc: 'Permissions, Chat & Economy API', updated: 'jul 17º, 2020', dls: '3.47M', stars: '246', icon: '🔒' }
       ];
 
       return (
         <div className="flex flex-col lg:flex-row gap-6 h-full">
           <div className="flex-1 flex flex-col gap-6">
-            <div className="flex gap-4 items-center bg-[#1a1e27] p-4 rounded-lg border border-gray-800">
-              <div className="flex-1 bg-[#11151d] border border-gray-700 rounded p-2 flex items-center gap-2">
+            <div className="flex flex-col md:flex-row gap-4 items-center bg-[#1a1e27] p-4 rounded-lg border border-gray-800">
+              <div className="w-full flex-1 bg-[#11151d] border border-gray-700 rounded p-2 flex items-center gap-2">
                 <span className="text-gray-500 pl-2">🔍</span>
-                <input type="text" placeholder="Buscar un plugin..." className="bg-transparent border-none outline-none text-white w-full text-sm" />
+                <input type="text" placeholder="Buscar plugin..." className="bg-transparent border-none outline-none text-white w-full text-sm" />
               </div>
-              <button className="bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded text-sm transition flex items-center gap-2 cursor-pointer">
+              <button className="w-full md:w-auto bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded text-sm transition flex justify-center items-center gap-2 cursor-pointer">
                 <span>⬇️</span> Plugins instalados
               </button>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 overflow-y-auto pb-4">
               {pluginsList.map((plug, i) => (
                 <div key={i} className="bg-[#1a1e27] border border-gray-800 hover:border-yellow-500/50 rounded-lg p-5 flex flex-col transition">
                   <div className="flex gap-4 mb-3">
-                    <div className="w-12 h-12 bg-yellow-500 rounded flex items-center justify-center text-2xl">{plug.icon}</div>
+                    <div className="w-12 h-12 shrink-0 bg-yellow-500 rounded flex items-center justify-center text-2xl">{plug.icon}</div>
                     <div>
                       <h4 className="text-white font-bold text-lg flex items-center gap-2">{plug.name} <span className="text-yellow-500 text-xs">↗</span></h4>
                       <p className="text-xs text-gray-400 flex items-center gap-1">👤 Por <span className="text-yellow-500">{plug.author}</span></p>
                     </div>
                   </div>
                   <p className="text-sm text-gray-400 mb-4 flex-1">{plug.desc}</p>
-                  <div className="bg-[#11151d] border border-gray-700 rounded p-2 inline-flex items-center gap-2 text-xs text-gray-400 w-fit mb-4">
-                    <span>📅</span> Última actualización <span className="text-white font-semibold">{plug.updated}</span>
-                  </div>
                   <div className="flex gap-3 mb-4">
                     <div className="bg-[#11151d] border border-gray-700 rounded px-3 py-1 flex items-center gap-2 text-sm text-white"><span className="text-blue-400">⬇️</span> {plug.dls}</div>
                     <div className="bg-[#11151d] border border-gray-700 rounded px-3 py-1 flex items-center gap-2 text-sm text-white"><span className="text-yellow-500">⭐</span> {plug.stars}</div>
                   </div>
                   <button className="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 rounded transition flex items-center justify-center gap-2 cursor-pointer">
-                    <span>☁️</span> Seleccionar versión
+                    <span>☁️</span> Instalar versión
                   </button>
                 </div>
               ))}
-            </div>
-          </div>
-
-          <div className="w-full lg:w-64 bg-[#1a1e27] rounded-lg border border-gray-800 p-6 h-fit">
-            <h3 className="text-yellow-500 font-bold mb-6 flex items-center gap-2"><span className="text-lg">Y</span> Plataforma</h3>
-            <div className="space-y-4 text-sm text-gray-400">
-              <label className="flex items-center gap-3 cursor-pointer text-gray-300"><input type="radio" name="platform" defaultChecked className="accent-yellow-500 w-4 h-4" /> Spigot</label>
-              <label className="flex items-center gap-3 cursor-pointer hover:text-gray-300 transition"><input type="radio" name="platform" className="accent-yellow-500 w-4 h-4" /> Hangar</label>
-              <label className="flex items-center gap-3 cursor-pointer hover:text-gray-300 transition"><input type="radio" name="platform" className="accent-yellow-500 w-4 h-4" /> Modrinth</label>
-              <label className="flex items-center gap-3 cursor-pointer hover:text-gray-300 transition"><input type="radio" name="platform" className="accent-yellow-500 w-4 h-4" /> Curseforge</label>
             </div>
           </div>
         </div>
@@ -235,8 +221,9 @@ export default function Panel({ plan, config }) {
   };
 
   return (
-    <div className="flex h-screen text-gray-300 w-full overflow-hidden">
-      <aside className="w-1/4 max-w-[280px] bg-[#1a1e27] border-r border-gray-800 flex flex-col hidden md:flex">
+    <div className="flex flex-col md:flex-row h-screen text-gray-300 w-full overflow-hidden relative">
+      
+      <aside className="w-1/4 max-w-[280px] bg-[#1a1e27] border-r border-gray-800 flex-col hidden md:flex">
         <div className="p-6 border-b border-gray-800"><h1 className="text-2xl font-extrabold text-white tracking-wider flex items-center gap-2">⛏️ MineHosting</h1></div>
         <div className="p-6 border-b border-gray-800">
           <div className="flex items-center gap-3 mb-2">
@@ -260,7 +247,41 @@ export default function Panel({ plan, config }) {
           <button onClick={() => setTab('plugins')} className={`w-full flex items-center gap-3 px-3 py-2 rounded transition cursor-pointer ${tab === 'plugins' ? 'bg-gray-800 border-l-2 border-yellow-500 text-white rounded-r' : 'hover:bg-gray-800/50'}`}><span>🔌</span> Plugins</button>
         </nav>
       </aside>
-      <main className="flex-1 p-8 overflow-y-auto bg-[#11151d]">{renderContenido()}</main>
+
+      <main className="flex-1 p-4 md:p-8 overflow-y-auto bg-[#11151d] pb-24 md:pb-8">
+        
+        <div className="md:hidden flex justify-between items-center bg-[#1a1e27] p-4 rounded-lg border border-gray-800 mb-4">
+          <div className="flex items-center gap-2">
+            <div className={`w-3 h-3 rounded-full ${estado === 'en_linea' ? 'bg-green-500' : estado === 'iniciando' ? 'bg-yellow-500 animate-pulse' : 'bg-red-500'}`}></div>
+            <span className="font-bold text-white text-sm truncate max-w-[150px]">{config?.nombre || 'Mi Servidor'}</span>
+          </div>
+          <div className="flex gap-2 text-sm">
+            <button onClick={encender} className="bg-green-700/20 text-green-500 px-3 py-1 rounded">▶️</button>
+            <button onClick={apagar} className="bg-red-700/20 text-red-500 px-3 py-1 rounded">⏹️</button>
+          </div>
+        </div>
+
+        {renderContenido()}
+      </main>
+
+      <nav className="md:hidden fixed bottom-0 left-0 w-full bg-[#1a1e27] border-t border-gray-800 flex justify-around items-center p-3 pb-6 z-50">
+        <button onClick={() => setTab('panel')} className={`flex flex-col items-center gap-1 cursor-pointer ${tab === 'panel' ? 'text-yellow-500' : 'text-gray-500'}`}>
+          <span className="text-xl">⊞</span><span className="text-[10px] font-bold">Panel</span>
+        </button>
+        <button onClick={() => setTab('consola')} className={`flex flex-col items-center gap-1 cursor-pointer ${tab === 'consola' ? 'text-yellow-500' : 'text-gray-500'}`}>
+          <span className="text-xl">&gt;_</span><span className="text-[10px] font-bold">Consola</span>
+        </button>
+        <button onClick={() => setTab('configuracion')} className={`flex flex-col items-center gap-1 cursor-pointer ${tab === 'configuracion' ? 'text-yellow-500' : 'text-gray-500'}`}>
+          <span className="text-xl">⚙️</span><span className="text-[10px] font-bold">Config</span>
+        </button>
+        <button onClick={() => setTab('archivos')} className={`flex flex-col items-center gap-1 cursor-pointer ${tab === 'archivos' ? 'text-yellow-500' : 'text-gray-500'}`}>
+          <span className="text-xl">📁</span><span className="text-[10px] font-bold">Archivos</span>
+        </button>
+        <button onClick={() => setTab('plugins')} className={`flex flex-col items-center gap-1 cursor-pointer ${tab === 'plugins' ? 'text-yellow-500' : 'text-gray-500'}`}>
+          <span className="text-xl">🔌</span><span className="text-[10px] font-bold">Plugins</span>
+        </button>
+      </nav>
+
     </div>
   );
 }
