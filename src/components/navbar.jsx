@@ -10,9 +10,10 @@ export default function Navbar({ setVista }) {
 
   return (
     <header className="bg-gray-800 p-4 md:p-5 shadow-lg flex justify-between items-center border-b border-gray-700 relative">
+      
       <h1 
         onClick={() => irA('inicio')} 
-        className="text-xl md:text-2xl font-bold text-green-500 tracking-wider cursor-pointer z-50 relative"
+        className="text-xl md:text-2xl font-bold text-green-500 tracking-wider cursor-pointer"
       >
         ⛏️ MineHosting
       </h1>
