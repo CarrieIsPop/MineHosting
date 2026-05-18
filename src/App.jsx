@@ -6,6 +6,7 @@ import Contact from './components/contact'
 import Configuracion from './components/configuracion'
 import Pago from './components/pago'
 import Panel from './components/panel'
+import Footer from './components/footer'
 
 function App() {
   const [vista, setVista] = useState('inicio')
@@ -32,6 +33,8 @@ function App() {
     <div className="min-h-screen flex flex-col bg-gray-900 font-sans">
       <Navbar setVista={setVista} />
       {renderContenido()}
+      
+      {['inicio', 'planes', 'contacto'].includes(vista) && <Footer />}
     </div>
   )
 }
